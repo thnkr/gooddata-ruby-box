@@ -36,7 +36,6 @@ rescue LoadError
   if c == "y" || c == "yes" || c == ""
     puts "[GoodData] Installing GoodData Ruby SDK..."
   	system("gem install nokogiri -- --use-system-libraries && gem install gooddata && git clone https://github.com/gooddata/gooddata-ruby-examples")
-
   	Gem.clear_paths
   else
     puts '[GoodData] Cancelled install of GoodData.'
@@ -50,7 +49,7 @@ require 'pp'
 # Set up demo project, upload to user's GoodData, update GoodFile
 puts '[GoodData] Installed GoodData SDK!'
 puts "[GoodData] Downloading demo project..."
-system("gooddata scaffold project my_test_project")
+system("gooddata scaffold project my_test_project") unless File.directory?('./my_test_project')
 updated_model = IO.readlines(model)
 updated_model[0] = "GoodData::Model::ProjectBuilder.create(\"#{title}\") do |p|\n"
 File.open(model, 'w') { |f|
@@ -66,7 +65,7 @@ File.open('./my_test_project/Goodfile', 'w') do |file|
   file.puts "{\n\"model\" : \"./model/model.rb\",\n\"project_id\" : \"#{project.pid}\"\n}"
 end
 
-puts "[GoodData] Setup Complete!"
+puts "[GoodData] Success! These the details about your new demo project:"
 puts "             User: #{user}"
 puts "             Project Title: #{title}"
 puts "             Project Identifier: #{project.pid}"
