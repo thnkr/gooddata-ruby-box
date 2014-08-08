@@ -16,12 +16,12 @@ if ARGV[0] && ARGV[1] && ARGV[2]
   password = ARGV[1]
   token = ARGV[2]
 else
-  puts 'GD: Let\'s start by logging you in and setting up a demo project.'
-  puts 'GD: (1/3) Enter Developer TOKEN (\"https://developer.gooddata.com/trial/\"):'
+  puts '[GoodData] Let\'s start by logging you in and setting up a demo project.'
+  puts '[GoodData] (1/3) Enter Developer TOKEN (\"https://developer.gooddata.com/trial/\"):'
   token = $stdin.gets.chomp!
-  puts 'GD: (2/3) GoodData Username:'
+  puts '[GoodData] (2/3) GoodData Username:'
   user = $stdin.gets.chomp!
-  puts "GD: (3/3) GoodData Password for #{user}: (hidden)"
+  puts "[GoodData] (3/3) GoodData Password for #{user}: (hidden)"
   password = STDIN.noecho(&:gets).strip!
 end
 
@@ -29,16 +29,16 @@ end
 begin
   gem "gooddata"
 rescue LoadError
-  puts "GD: GoodData Ruby SDK has not been installed on this machine, would you like to install it? (y/n)"
+  puts "[GoodData] GoodData Ruby SDK has not been installed on this machine, would you like to install it? (y/n)"
 
   # Confirm the use would like to install GoodData
   c = $stdin.gets.chomp
   if c == "y" || c == "yes" || c == ""
-    puts "GD: Installing GoodData Ruby SDK..."
+    puts "[GoodData] Installing GoodData Ruby SDK..."
   	system("gem install nokogiri -- --use-system-libraries && gem install gooddata")
   	Gem.clear_paths
   else
-    puts 'GD: Cancelled install of GoodData.'
+    puts '[GoodData] Cancelled install of GoodData.'
     exit
   end
 end
@@ -47,8 +47,8 @@ require 'gooddata'
 require 'pp'
 
 # Set up demo project, upload to user's GoodData, update GoodFile
-puts 'GD: Installed GoodData SDK!'
-puts "GD: Downloading demo project..."
+puts '[GoodData] Installed GoodData SDK!'
+puts "[GoodData] Downloading demo project..."
 system("gooddata scaffold project my_test_project")
 updated_model = IO.readlines(model)
 updated_model[0] = "GoodData::Model::ProjectBuilder.create(\"#{title}\") do |p|\n"
@@ -57,15 +57,15 @@ File.open(model, 'w') { |f|
 }
 
 GoodData.connect user, password
-puts "GD: Deploying demo project \"#{title}\" for #{user}. This can take up to 2 minutes..."
+puts "[GoodData] Deploying demo project \"#{title}\" for #{user}. This can take up to 2 minutes..."
 blueprint = eval(File.read('./my_test_project/model/model.rb')).to_blueprint
 project = GoodData::Model::ProjectCreator.migrate(:token => token, :spec => blueprint)
-puts "GD: Updating Goodfile..."
+puts "[GoodData] Updating Goodfile..."
 File.open('./my_test_project/Goodfile', 'w') do |file|
   file.puts "{\n\"model\" : \"./model/model.rb\",\n\"project_id\" : \"#{project.pid}\"\n}"
 end
 
-puts "GD: Setup Complete!"
-puts "GD:   User: #{user}"
-puts "GD:   Project Title: #{title}"
-puts "GD:   Project Identifier: #{project.pid}"
+puts "[GoodData] Setup Complete!"
+puts "             User: #{user}"
+puts "             Project Title: #{title}"
+puts "             Project Identifier: #{project.pid}"
