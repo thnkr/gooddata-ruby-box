@@ -27,7 +27,6 @@ end
 
 # Check GoodData SDK Installation
 begin
-  gem "water-works"
   gem "gooddata"
 rescue LoadError
   puts "\nGoodData Ruby SDK has not been installed on this machine, would you like to install it? (y/n)"
@@ -36,7 +35,7 @@ rescue LoadError
   c = $stdin.gets.chomp
   if c == "y" || c == "yes" || c == ""
     puts "Installing GoodData Ruby SDK..."
-  	#system("gem install nokogiri -- --use-system-libraries && gem install gooddata && gem install artii")
+  	#system("gem install nokogiri -- --use-system-libraries && gem install gooddata")
   	Gem.clear_paths
   else
     puts 'Cancelled install of GoodData.'
@@ -45,12 +44,10 @@ rescue LoadError
 end
 
 require 'gooddata'
-require 'artii'
 require 'pp'
 
 # Set up demo project, upload to user's GoodData, update GoodFile
-a = Artii::Base.new
-puts a.asciify('GoodData SDK')
+puts a.asciify('Installed GoodData SDK!')
 puts "Downloading demo project..."
 system("gooddata scaffold project my_test_project")
 updated_model = IO.readlines(model)
