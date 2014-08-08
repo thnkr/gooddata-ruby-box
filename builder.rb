@@ -35,7 +35,8 @@ rescue LoadError
   c = $stdin.gets.chomp
   if c == "y" || c == "yes" || c == ""
     puts "[GoodData] Installing GoodData Ruby SDK..."
-  	system("gem install nokogiri -- --use-system-libraries && gem install gooddata")
+  	system("gem install nokogiri -- --use-system-libraries && gem install gooddata && git clone https://github.com/gooddata/gooddata-ruby-examples")
+
   	Gem.clear_paths
   else
     puts '[GoodData] Cancelled install of GoodData.'
