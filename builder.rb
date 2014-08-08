@@ -17,9 +17,9 @@ if ARGV[0] && ARGV[1] && ARGV[2]
   token = ARGV[2]
 else
   puts '[GoodData] Let\'s start by logging you in and setting up a demo project.'
-  puts '[GoodData] (1/3) Enter Developer TOKEN (\"https://developer.gooddata.com/trial/\"):'
+  puts '[GoodData] (1/3) Enter Developer TOKEN ("https://developer.gooddata.com/trial/"):'
   token = $stdin.gets.chomp!
-  puts '[GoodData] (2/3) GoodData Username:'
+  puts '[GoodData] (2/3) GoodData Username (USERNAME@gooddata.com):'
   user = $stdin.gets.chomp!
   puts "[GoodData] (3/3) GoodData Password for #{user}: (hidden)"
   password = STDIN.noecho(&:gets).strip!
