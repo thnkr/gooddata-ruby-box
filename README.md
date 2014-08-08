@@ -12,7 +12,6 @@ Nitrous.io allows you to boot a small private linux machine in the cloud called 
 
 ```html
 <a href="https://www.nitrous.io/hack_button?source=embed&runtime=rails&repo=thnkr%2Fgooddata-ruby-box&file_to_open=README.md" style="border:0;text-decoration:none"><img src="https://d3o0mnbgv6k92a.cloudfront.net/assets/hack-s-v1-19458b540eb9a0b6a943ee6d27941699.png" alt="Hack thnkr/gooddata-ruby-box on Nitrous.IO" /></a>
-    git clone https://github.com/thnkr/gooddata-ruby-box
 ```html
 
 Then run the builder script:
