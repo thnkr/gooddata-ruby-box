@@ -43,4 +43,4 @@ For questions or support contact expert.services@gooddata.com or visit the [supp
 - Mac OS X (Mavericks: 10.9.3)
 - Ubuntu 14.04 LTS (Trusty Tahr)
 
-For more information about the Ruby
+For more information about the GoodData Ruby SDK visit the dedicated developer [site](http://sdk.gooddata.com/gooddata-ruby).
