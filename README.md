@@ -10,7 +10,7 @@ A configuration script to set up your Ruby environment for use with the GoodData
 ## Install: Nitrous.io Linux "Hack" Box
 Nitrous.io allows you to boot a small private linux machine in the cloud called a Hack Box.
 
-[![Hack GoodData Ruby SDK on Nitrous.IO](https://d3o0mnbgv6k92a.cloudfront.net/assets/hack-s-v1-19458b540eb9a0b6a943ee6d27941699.png)](https://www.nitrous.io/hack_button?source=embed&runtime=rails&repo=thnkr%2Fgooddata-ruby-box&file_to_open=README.md)
+[![Hack GoodData Ruby SDK on Nitrous.IO](https://d3o0mnbgv6k92a.cloudfront.net/assets/hack-l-v1-4b6757c3247e3c50314390ece34cdb11.png)](https://www.nitrous.io/hack_button?source=embed&runtime=rails&repo=thnkr%2Fgooddata-ruby-box&file_to_open=README.md)
 
 Then run the builder script:
 
