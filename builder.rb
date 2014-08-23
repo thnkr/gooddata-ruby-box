@@ -2,9 +2,9 @@
 # GoodData Ruby SDK Environment Builder
 require 'io/console'
 
-puts "##########################################"
-puts "# GOODDATA RUBY SDK: ENVIRONMENT BUILDER #"
-puts "##########################################"
+puts "======================================="
+puts "GOODDATA RUBY SDK: ENVIRONMENT BUILDER"
+puts "======================================="
 puts "Learn more at https://sdk.gooddata.com/gooddata-ruby/"
 
 # User Credentials for GoodData Platform
@@ -63,6 +63,12 @@ project = GoodData::Model::ProjectCreator.migrate(:token => token, :spec => blue
 puts "[GoodData] Updating Goodfile..."
 File.open('./my_test_project/Goodfile', 'w') do |file|
   file.puts "{\n\"model\" : \"./model/model.rb\",\n\"project_id\" : \"#{project.pid}\"\n}"
+end
+puts '[GoodData] Would you like your computer to remember your login credentials?'
+
+q = $stdin.gets.chomp
+if q == "y" || q == "yes" || q == ""
+  system("gooddata auth store")
 end
 
 puts "[GoodData] Success! These the details about your new demo project:"
