@@ -56,10 +56,10 @@ File.open(model, 'w') { |f|
   updated_model.each { |line| f.puts line }
 }
 
-GoodData.connect user, password
+client = GoodData.connect user, password
 puts "[GoodData] Deploying demo project \"#{title}\" for #{user}. This can take up to 2 minutes..."
 blueprint = eval(File.read('./my_test_project/model/model.rb')).to_blueprint
-project = GoodData::Model::ProjectCreator.migrate(:token => token, :spec => blueprint)
+project = client.create_project_from_blueprint(blueprint, auth_token: token)
 puts "[GoodData] Updating Goodfile..."
 File.open('./my_test_project/Goodfile', 'w') do |file|
   file.puts "{\n\"model\" : \"./model/model.rb\",\n\"project_id\" : \"#{project.pid}\"\n}"
