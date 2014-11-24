@@ -72,6 +72,7 @@ if q == "y" || q == "yes" || q == ""
 end
 
 puts "[GoodData] Success! These the details about your new demo project:"
-puts "             User: #{user}"
-puts "             Project Title: #{title}"
-puts "             Project Identifier: #{project.pid}"
+puts "       User: #{user}"
+puts "       Project Title: #{title}"
+puts "       Project Identifier: #{project.pid}\n"
+puts "Visit your new project at https://secure.gooddata.com\n"
